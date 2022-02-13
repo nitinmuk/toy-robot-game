@@ -1,8 +1,8 @@
 import readline from 'readline';
-import bunyan from 'bunyan';
-import { InputStrategyType, InputStrategy } from '../input.strategy.types';
+import createLogger from '../../../logger';
+import { InputStrategyType, InputStrategy } from '../../input.strategy.types';
 
-const logger = bunyan.createLogger({ name: 'commandline.strategy' });
+const logger = createLogger('input.commandline');
 let rl: readline.Interface;
 
 // @TODO keep rl open and expose a generic function to close stream

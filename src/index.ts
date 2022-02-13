@@ -1,18 +1,25 @@
-import Logger from 'bunyan';
-import { InputStrategyType, inputStrategyFactory } from './inputStrategy';
+import { InputStrategyType, inputStrategyFactory } from './input';
+import { ProcessorStrategyType, processorStrategyFactory } from './processor';
+import config from './config';
 
-const logger = Logger.createLogger({ name: 'play.game' });
+const { currentProcessorStrategy, currentInputStrategy } = config;
 
-const currentInputStrategy = InputStrategyType.COMMAND_LINE;
-
-const takeInput = async (inputstrategyType: InputStrategyType) => {
+const initializeReadInput = async (
+  inputstrategyType: InputStrategyType,
+  inputListener: (input: string) => void
+) => {
   const inputStrategyInstance = await inputStrategyFactory(inputstrategyType);
-  inputStrategyInstance.readInput((input) => console.log(`Received: ${input}`));
+  inputStrategyInstance.readInput(inputListener);
 };
 
-function playGame() {
-  logger.info('starting the game');
-  takeInput(currentInputStrategy);
+const getProcessor = async (processorStrategyType: ProcessorStrategyType) => {
+  return processorStrategyFactory(processorStrategyType);
+};
+
+async function playGame() {
+  console.log('Press ctrl+c to quit');
+  const processor = await getProcessor(currentProcessorStrategy);
+  initializeReadInput(currentInputStrategy, processor.processUserAction);
 }
 
 playGame();
