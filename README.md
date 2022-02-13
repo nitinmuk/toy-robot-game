@@ -8,7 +8,6 @@
 * [Installation](#installation)
 * [Tests](#tests)
 * [Technologies](#technologies)
-* [URL](#url)
 * [License](#license)
 * [Questions](#questions)
 
