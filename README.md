@@ -12,7 +12,7 @@
 * [Questions](#questions)
 
 ## Description
-* It is a robot toy game simultation command line application which can be used to place a toy on a square dashboard and then move it around without making it fall as any fall action will be ignored.
+* It is a robot toy game simulation command line application which can be used to place a toy on a square dashboard and then move it around without making it fall as any fall action will be ignored.
 * Valid actions are: PLACE, MOVE, LEFT & RIGHT as described below.
 - MOVE will move the toy robot one unit forward in the direction it is currently facing.
 - LEFT and RIGHT will rotate the robot 90 degrees in the specified direction without changing the position of the robot.
