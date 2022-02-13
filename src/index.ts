@@ -17,7 +17,6 @@ const getProcessor = async (processorStrategyType: ProcessorStrategyType) => {
 };
 
 async function playGame() {
-  console.log('Press ctrl+c to quit');
   const processor = await getProcessor(currentProcessorStrategy);
   initializeReadInput(currentInputStrategy, processor.processUserAction);
 }

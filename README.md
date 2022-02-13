@@ -5,7 +5,7 @@
 
 ## Table of Contents
 * [Description](#description)
-* [Installation](#installation)
+* [Execution](#execution)
 * [Tests](#tests)
 * [Technologies](#technologies)
 * [License](#license)
@@ -44,14 +44,16 @@ MOVE
 REPORT
 Output: 3,3,NORTH
 ```
+- Press ctrl+c to exit the running application.
 
-## Installation
+## Execution
 Please clone/fork repository and run:
  - npm install 
  - npm start
 
 ## Tests
-Basic test cases has been implemented for this application.
+Basic test cases has been implemented for this application and run following to execute test cases:
+- npm test
 
 ## Technologies
 * Node (>= 16.13.2)
