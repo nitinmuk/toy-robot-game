@@ -7,5 +7,3 @@ export interface InputStrategy {
   readInput: (inputListener: (input: string) => void) => Promise<void>;
   closeInput: () => void;
 }
-
-export type CommandlineInput = InputStrategy;

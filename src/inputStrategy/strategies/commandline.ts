@@ -1,12 +1,12 @@
 import readline from 'readline';
 import bunyan from 'bunyan';
-import { CommandlineInput, InputStrategyType } from '../input.strategy.types';
+import { InputStrategyType, InputStrategy } from '../input.strategy.types';
 
 const logger = bunyan.createLogger({ name: 'commandline.strategy' });
 let rl: readline.Interface;
 
 // @TODO keep rl open and expose a generic function to close stream
-const commanlineStrategy: CommandlineInput = {
+const commandlineStrategy: InputStrategy = {
   type: InputStrategyType.COMMAND_LINE,
   readInput: async (inputListener: (input: string) => void) => {
     rl = readline.createInterface({
@@ -26,4 +26,4 @@ const commanlineStrategy: CommandlineInput = {
   },
 };
 
-export default commanlineStrategy;
+export default commandlineStrategy;
