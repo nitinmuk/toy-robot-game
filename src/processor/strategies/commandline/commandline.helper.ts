@@ -1,9 +1,4 @@
-import {
-  GAME_TABLE_X_MAX,
-  GAME_TABLE_Y_MAX,
-  GAME_TABLE_X_ORIGIN,
-  GAME_TABLE_Y_ORIGIN,
-} from '../../processor.constant';
+import config from '../../../config';
 import {
   RobotOrientation,
   RobotStatus,
@@ -58,6 +53,12 @@ export const executePlaceAction = (
   requestedRobotStatus: RobotStatus,
   currentRobotStatus?: RobotStatus
 ): RobotStatus | undefined => {
+  const {
+    GAME_TABLE_X_MAX,
+    GAME_TABLE_Y_MAX,
+    GAME_TABLE_X_ORIGIN,
+    GAME_TABLE_Y_ORIGIN,
+  } = config;
   const { x, y } = requestedRobotStatus;
   if (
     x >= GAME_TABLE_X_ORIGIN &&
@@ -75,6 +76,12 @@ export const executeMoveAction = (
 ): RobotStatus | undefined => {
   if (currentRobotStatus) {
     const { x, y, orientation } = currentRobotStatus;
+    const {
+      GAME_TABLE_X_MAX,
+      GAME_TABLE_Y_MAX,
+      GAME_TABLE_X_ORIGIN,
+      GAME_TABLE_Y_ORIGIN,
+    } = config;
     let newX;
     let newY;
     switch (orientation) {
