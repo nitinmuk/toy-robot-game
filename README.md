@@ -56,7 +56,7 @@ Basic test cases has been implemented for this application and run following to 
 - npm test
 
 ## Technologies
-* Node (>= 16.13.2)
+* Node (developed and tested using node version 16.13.2)
 * bunyan
 * Jest
 * Sinon
