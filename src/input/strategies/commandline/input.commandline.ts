@@ -5,7 +5,6 @@ import { InputStrategyType, InputStrategy } from '../../input.strategy.types';
 const logger = createLogger('input.commandline');
 let rl: readline.Interface;
 
-// @TODO keep rl open and expose a generic function to close stream
 const commandlineStrategy: InputStrategy = {
   type: InputStrategyType.COMMAND_LINE,
   readInput: async (inputListener: (input: string) => void) => {

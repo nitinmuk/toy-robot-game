@@ -1,2 +1,68 @@
-# toy-robot-game
-Move toy around
+# Robot Toy Game
+[![](https://img.shields.io/badge/License-MIT-green)](#license)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
+
+## Table of Contents
+* [Description](#description)
+* [Installation](#installation)
+* [Tests](#tests)
+* [Technologies](#technologies)
+* [URL](#url)
+* [License](#license)
+* [Questions](#questions)
+
+## Description
+* It is a robot toy game simultation command line application which can be used to place a toy on a square dashboard and then move it around without making it fall as any fall action will be ignored.
+* Valid actions are: PLACE, MOVE, LEFT & RIGHT as described below.
+- MOVE will move the toy robot one unit forward in the direction it is currently facing.
+- LEFT and RIGHT will rotate the robot 90 degrees in the specified direction without changing the position of the robot.
+- REPORT will announce the X,Y and orientation of the robot(NORTH, SOUTH, EAST, WEST).
+- A robot that is not on the table will choose to ignore the MOVE, LEFT, RIGHT and REPORT commands.
+
+- Example Input and Output:
+
+```plain
+PLACE 0,0,NORTH
+MOVE
+REPORT
+Output: 0,1,NORTH
+```
+
+```plain
+PLACE 0,0,NORTH
+LEFT
+REPORT
+Output: 0,0,WEST
+```
+
+```plain
+PLACE 1,2,EAST
+MOVE
+MOVE
+LEFT
+MOVE
+REPORT
+Output: 3,3,NORTH
+```
+
+## Installation
+Please clone/fork repository and run:
+ - npm install 
+ - npm start
+
+## Tests
+Basic test cases has been implemented for this application.
+
+## Technologies
+* Node (>= 16.13.2)
+* bunyan
+* Jest
+* Sinon
+
+## License
+This application is covered by [MIT](./LICENSE) license
+
+## Questions
+* Please raise a request at [github](https://github.com/nitinmuk)
+* For any private question/enquiry, please reach out to my email: nitinmukes@gmail.com
