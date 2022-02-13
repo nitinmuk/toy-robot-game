@@ -2,14 +2,6 @@ export enum ProcessorStrategyType {
   COMMAND_LINE = 'commandline',
 }
 
-export enum InputStringParserType {
-  BASIC = 'standard',
-}
-
-export enum OutputFormatType {
-  BASIC = 'standard',
-}
-
 export interface GameTable {
   x: number;
   y: number;
