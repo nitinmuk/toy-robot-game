@@ -1,0 +1,50 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaVersion": 2020
+    },
+    "env": {
+      "es6": true,
+      "browser": true,
+      "commonjs": true,
+      "node": true
+    },
+    "extends": ["prettier",
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended"],
+    "plugins": [
+      "prettier",
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "array-callback-return": "error",
+      "camelcase": "error",
+      "curly": "error",
+      "dot-notation": "error",
+      "eqeqeq": "error",
+      "no-duplicate-case": "error",
+      "no-else-return": "error",
+      "no-empty": "error",
+      "no-empty-function": "error",
+      "no-extra-semi": "error",
+      "no-func-assign": "error",
+      "no-unreachable": "error",
+      "no-var": "error",
+      "prefer-arrow-callback": "error",
+      "prefer-const": "error",
+      "prettier/prettier": ["error", {"singleQuote": true}],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ],
+      "vars-on-top": "error",
+      "yoda": "error",
+      "no-undef":"off",
+      "@typescript-eslint/no-unused-vars": "error"
+    }
+  }
