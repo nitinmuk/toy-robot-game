@@ -14,6 +14,9 @@
 ## Description
 * It is a robot toy game simulation command line application which can be used to place a toy on a square dashboard and then move it around without making it fall as any fall action will be ignored.
 * Valid actions are: PLACE, MOVE, LEFT & RIGHT as described below.
+- PLACE x,y,orientation will put the robot on square table as long as x & y are valid numbers and orientation is valid.
+- Valid value for orientation are EAST, WEST, NORTH & SOUTH
+- Value range for x & y is configurable in config module. Default value range is 0-5.
 - MOVE will move the toy robot one unit forward in the direction it is currently facing.
 - LEFT and RIGHT will rotate the robot 90 degrees in the specified direction without changing the position of the robot.
 - REPORT will announce the X,Y and orientation of the robot(NORTH, SOUTH, EAST, WEST).
