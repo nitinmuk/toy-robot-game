@@ -1,9 +1,9 @@
 import createLogger from '../logger';
-import { InputStrategyType, InputStrategy } from './input.strategy.types';
+import { InputStrategyType, InputStrategy } from './input.types';
 
 const logger = createLogger('input.strategy.factory');
 
-const inputStrategyFacotry = async (inputStrategyType: InputStrategyType) => {
+const inputStrategyFactory = async (inputStrategyType: InputStrategyType) => {
   let inputStrategy: InputStrategy;
   try {
     const inputStrategyModule = await import(
@@ -20,4 +20,4 @@ const inputStrategyFacotry = async (inputStrategyType: InputStrategyType) => {
   return inputStrategy;
 };
 
-export default inputStrategyFacotry;
+export default inputStrategyFactory;

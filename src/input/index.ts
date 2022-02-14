@@ -1,4 +1,4 @@
-import { InputStrategyType } from './input.strategy.types';
+import { InputStrategyType } from './input.types';
 import inputStrategyFactory from './input.strategy.factory';
 
 export { InputStrategyType, inputStrategyFactory };

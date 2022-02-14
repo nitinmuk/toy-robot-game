@@ -3,7 +3,7 @@ import { ProcessorStrategy, ProcessorStrategyType } from './processor.types';
 
 const logger = createLogger('input.strategy.factory');
 
-const ProcessorStrategyFactory = async (
+const processorStrategyFactory = async (
   processorStrategyType: ProcessorStrategyType
 ) => {
   let processorStrategy: ProcessorStrategy;
@@ -22,4 +22,4 @@ const ProcessorStrategyFactory = async (
   return processorStrategy;
 };
 
-export default ProcessorStrategyFactory;
+export default processorStrategyFactory;

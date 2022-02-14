@@ -1,55 +1,32 @@
 import {
   ProcessorStrategyType,
   ProcessorStrategy,
-  UserCommand,
   RobotStatus,
   UserPlaceAction,
 } from '../../processor.types';
-import {
-  actionParser,
-  executeLeftAction,
-  executeMoveAction,
-  executePlaceAction,
-  executeRightAction,
-  displayOutput,
-} from './commandline.helper';
+import { actionParser } from '../../action/action.parser';
+import userActionProcessors from '../../user.action.processor';
 
 let currentRobotStatus: RobotStatus | undefined;
 
-const commandlineProcessorStrategy: ProcessorStrategy = {
+const commandlineProcessor: ProcessorStrategy = {
   type: ProcessorStrategyType.COMMAND_LINE,
   actionParser,
-  displayOutput,
-  processUserAction: function (action: string) {
+  userActionProcessors,
+  processUserAction: (action: string) => {
     const userAction = actionParser(action);
     if (userAction) {
-      switch (userAction.action) {
-        case UserCommand.PLACE: {
-          const placeAction = userAction as UserPlaceAction;
-          currentRobotStatus = executePlaceAction(
-            placeAction.robotStatus,
-            currentRobotStatus
-          );
-          break;
-        }
-        case UserCommand.LEFT:
-          currentRobotStatus = executeLeftAction(currentRobotStatus);
-          break;
-
-        case UserCommand.RIGHT:
-          currentRobotStatus = executeRightAction(currentRobotStatus);
-          break;
-
-        case UserCommand.MOVE:
-          currentRobotStatus = executeMoveAction(currentRobotStatus);
-          break;
-
-        case UserCommand.REPORT:
-          displayOutput(currentRobotStatus);
-          break;
-      }
+      const actionProcessor = userActionProcessors.find(
+        (userActionProcessor) =>
+          userActionProcessor.userAction === userAction.action
+      );
+      const requestedRobotStatus = (userAction as UserPlaceAction).robotStatus;
+      const updatedRobotStatus = actionProcessor?.processor(
+        requestedRobotStatus ?? currentRobotStatus
+      );
+      currentRobotStatus = updatedRobotStatus ?? currentRobotStatus;
     }
   },
 };
 
-export default commandlineProcessorStrategy;
+export default commandlineProcessor;

@@ -35,9 +35,14 @@ export type UserAction =
   | UserPlaceAction
   | { action: Omit<UserCommand, 'PLACE'> };
 
+export interface UserActionProcessor {
+  userAction: UserCommand;
+  processor: (robotStatus: RobotStatus) => RobotStatus | undefined | void;
+}
+
 export interface ProcessorStrategy {
   type: `${ProcessorStrategyType}`;
   processUserAction: (action: string) => void;
   actionParser: (input: string) => UserAction | undefined;
-  displayOutput?: (status: RobotStatus) => void;
+  userActionProcessors: UserActionProcessor[];
 }
