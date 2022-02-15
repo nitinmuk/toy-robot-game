@@ -10,7 +10,7 @@
     "start": "node dist/app.js",
     "watch-node": "tsc && nodemon dist/app.js",
     "watch-ts": "tsc -w",
-    "test": "ts-node -O '{\"module\":\"commonjs\"}' node_modules/jest/bin/jest.js --coverage"
+    "test": "ts-node -O '{\"module\":\"commonjs\"}' node_modules/jest/bin/jest.js"
   },
   "repository": {
     "type": "git",
