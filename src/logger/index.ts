@@ -9,6 +9,6 @@ const bunyanOptions = {
   ],
 };
 
-export default function (name: string) {
+export default (name: string) => {
   return Bunyan.createLogger({ ...bunyanOptions, name });
-}
+};

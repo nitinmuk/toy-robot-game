@@ -23,6 +23,8 @@
 - REPORT will announce the X,Y and orientation of the robot(NORTH, SOUTH, EAST, WEST).
 - A robot that is not on the table will choose to ignore the MOVE, LEFT, RIGHT and REPORT commands.
 
+- Application will generate logs in application.log file in repository root directory.
+
 - Example Input and Output:
 
 ```plain
