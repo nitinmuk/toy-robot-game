@@ -4,7 +4,7 @@ import {
   RobotStatus,
   UserPlaceAction,
 } from '../../processor.types';
-import { actionParser } from '../../action/action.parser';
+import actionParser from '../../action/action.parser';
 import userActionProcessors from '../../user.action.processor';
 
 let currentRobotStatus: RobotStatus | undefined;
