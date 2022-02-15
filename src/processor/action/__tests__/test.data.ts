@@ -1,4 +1,4 @@
-import { RobotOrientation, RobotStatus } from "../../processor.types";
+import { RobotOrientation, RobotStatus } from '../../processor.types';
 
 export const robotStatus: RobotStatus = {
   x: 1,
