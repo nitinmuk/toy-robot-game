@@ -4,7 +4,6 @@ import {
   UserCommand,
   UserPlaceAction,
 } from '../processor.types';
-
 import createLogger from '../../logger';
 
 const logger = createLogger('action.parser');

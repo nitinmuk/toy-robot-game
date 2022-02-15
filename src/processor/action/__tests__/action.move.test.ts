@@ -1,13 +1,9 @@
-import { RobotOrientation, RobotStatus } from '../../processor.types';
+import { RobotOrientation } from '../../processor.types';
 import sut from '../action.move';
 import config from '../../../config';
+import { robotStatus } from './test.data';
 
 describe('action.move', () => {
-  const robotStatus: RobotStatus = {
-    x: 1,
-    y: 1,
-    orientation: RobotOrientation.WEST,
-  };
   it('must increase x by 1 when orientation is EAST', () => {
     // Given
     const currentStatus = {

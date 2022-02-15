@@ -1,13 +1,9 @@
-import { RobotOrientation, RobotStatus } from '../../processor.types';
+import { RobotOrientation } from '../../processor.types';
 import sut from '../action.place';
 import config from '../../../config';
+import { robotStatus } from './test.data';
 
 describe('action.place', () => {
-  const robotStatus: RobotStatus = {
-    x: 1,
-    y: 1,
-    orientation: RobotOrientation.WEST,
-  };
   it('must return new status if it is valid', () => {
     // Given
     const requestedStatus = {

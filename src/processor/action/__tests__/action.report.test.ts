@@ -1,5 +1,5 @@
-import { RobotOrientation, RobotStatus } from '../../processor.types';
 import sut from '../action.report';
+import { robotStatus } from './test.data';
 
 describe('action.report', () => {
   let consoleLogMock: jest.SpyInstance;
@@ -14,11 +14,6 @@ describe('action.report', () => {
 
   it('must display robot current status', () => {
     // Given
-    const robotStatus: RobotStatus = {
-      x: 1,
-      y: 1,
-      orientation: RobotOrientation.WEST,
-    };
     const displayString = `Output: ${robotStatus.x},${robotStatus.y},${robotStatus.orientation}`;
 
     // When

@@ -1,3 +1,10 @@
+import { RobotOrientation, RobotStatus } from "../../processor.types";
+
+export const robotStatus: RobotStatus = {
+  x: 1,
+  y: 1,
+  orientation: RobotOrientation.WEST,
+};
 export const parsableActions = [
   {
     action: 'PLACE 1,3,NORTH',
