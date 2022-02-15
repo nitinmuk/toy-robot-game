@@ -5,6 +5,10 @@ import {
   UserPlaceAction,
 } from '../processor.types';
 
+import createLogger from '../../logger';
+
+const logger = createLogger('action.parser');
+
 export default (input: string): UserAction | undefined => {
   const inputRegularExpression = /\w+\s*\d*,*\d*,*\w*/;
   const validActionFormat =
@@ -33,6 +37,7 @@ export default (input: string): UserAction | undefined => {
               orientation = givenOrientation;
               break;
             default:
+              logger.warn({ input }, 'invalid user action');
               return;
           }
           const givenX = parseInt(position?.[0]);
@@ -50,4 +55,5 @@ export default (input: string): UserAction | undefined => {
       }
     }
   }
+  logger.warn({ input }, 'invalid user action');
 };
