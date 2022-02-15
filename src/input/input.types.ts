@@ -1,11 +1,8 @@
-import { ProcessorStrategy } from '../processor/processor.types';
-
 export enum InputStrategyType {
   COMMAND_LINE = 'commandline',
 }
-
 export interface InputStrategy {
   type: `${InputStrategyType}`;
-  readInput: (processorStrategy: ProcessorStrategy) => void;
+  readInput: (inputProcessor: (input: string) => void) => void;
   closeInput: () => void;
 }

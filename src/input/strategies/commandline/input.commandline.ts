@@ -1,18 +1,17 @@
 import readline from 'readline';
-import { ProcessorStrategy } from '../../../processor/processor.types';
 import { InputStrategyType, InputStrategy } from '../../input.types';
 
 let rl: readline.Interface;
 
 const commandlineStrategy: InputStrategy = {
   type: InputStrategyType.COMMAND_LINE,
-  readInput: (processor: ProcessorStrategy) => {
+  readInput: (processorFunction: (input: string) => void) => {
     rl = readline.createInterface({
       input: process.stdin,
       output: undefined,
     });
-    rl.on('line', processor.processUserAction);
-    rl.question('', processor.processUserAction);
+    rl.on('line', processorFunction);
+    rl.question('', processorFunction);
   },
   closeInput: () => {
     return rl.close();

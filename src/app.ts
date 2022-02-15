@@ -7,7 +7,7 @@ const { currentProcessorStrategy, currentInputStrategy } = config;
 async function playGame() {
   const processor = await processorStrategyFactory(currentProcessorStrategy);
   const inputStrategy = await inputStrategyFactory(currentInputStrategy);
-  inputStrategy.readInput(processor);
+  inputStrategy.readInput(processor.processUserAction);
 }
 
 playGame();
