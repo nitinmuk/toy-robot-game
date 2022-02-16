@@ -1,7 +1,7 @@
 import createLogger from '../logger';
 import { ProcessorStrategy, ProcessorStrategyType } from './processor.types';
 
-const logger = createLogger('input.strategy.factory');
+const logger = createLogger('processor.strategy.factory');
 
 const processorStrategyFactory = async (
   processorStrategyType: ProcessorStrategyType
