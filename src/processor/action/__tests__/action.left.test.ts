@@ -15,7 +15,9 @@ describe('action.left', () => {
     };
 
     // When
-    const newStatus = sut(currentStatus);
+    const newStatus = sut({
+      robotStatus: currentStatus,
+    });
 
     // Then
     expect(newStatus).toEqual(expectedResponse);
@@ -33,7 +35,9 @@ describe('action.left', () => {
     };
 
     // When
-    const newStatus = sut(currentStatus);
+    const newStatus = sut({
+      robotStatus: currentStatus,
+    });
 
     // Then
     expect(newStatus).toEqual(expectedResponse);
@@ -51,7 +55,9 @@ describe('action.left', () => {
     };
 
     // When
-    const newStatus = sut(currentStatus);
+    const newStatus = sut({
+      robotStatus: currentStatus,
+    });
 
     // Then
     expect(newStatus).toEqual(expectedResponse);
@@ -69,7 +75,9 @@ describe('action.left', () => {
     };
 
     // When
-    const newStatus = sut(currentStatus);
+    const newStatus = sut({
+      robotStatus: currentStatus,
+    });
 
     // Then
     expect(newStatus).toEqual(expectedResponse);

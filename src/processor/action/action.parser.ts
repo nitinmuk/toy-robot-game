@@ -9,23 +9,36 @@ import createLogger from '../../logger';
 const logger = createLogger('action.parser');
 
 export default (input: string): UserAction | undefined => {
-  const inputRegularExpression = /\w+\s*\d*,*\d*,*\w*/;
+  const inputRegularExpression = /\w+\s*-?\d*,*-?\d*,*\w*/;
   const validActionFormat =
     typeof input === 'string' && input.match(inputRegularExpression);
   if (validActionFormat) {
     const action = validActionFormat[0].trim().toUpperCase();
-    switch (action) {
+    const userAction = action?.split(' ');
+    switch (userAction[0]) {
       case UserCommand.LEFT:
       case UserCommand.RIGHT:
       case UserCommand.MOVE:
-      case UserCommand.REPORT:
+      case UserCommand.REPORT: {
+        if (userAction[0] === action) {
+          return {
+            action,
+          };
+        }
+        return;
+      }
+      case UserCommand.FINDPATH: {
+        const position = userAction?.[1]?.split(',');
+        const givenX = parseInt(position?.[0]);
+        const givenY = parseInt(position?.[1]);
         return {
-          action,
+          action: UserCommand.FINDPATH,
+          destination: { x: givenX, y: givenY },
         };
+      }
       default: {
-        const userPlaceAction = action?.split(' ');
-        if (userPlaceAction?.[0]?.toUpperCase() === UserCommand.PLACE) {
-          const position = userPlaceAction?.[1]?.split(',');
+        if (userAction?.[0]?.toUpperCase() === UserCommand.PLACE) {
+          const position = userAction?.[1]?.split(',');
           let orientation: RobotOrientation;
           const givenOrientation = position?.[2]?.toUpperCase();
           switch (givenOrientation) {

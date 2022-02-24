@@ -1,20 +1,16 @@
-import config from '../../config';
-import { RobotStatus } from '../processor.types';
+import { ActionProcessorData, RobotStatus } from '../processor.types';
+import { isObstacle } from '../obstacle';
 
-export default (requestedRobotStatus: RobotStatus): RobotStatus | undefined => {
-  const {
-    GAME_TABLE_X_MAX,
-    GAME_TABLE_Y_MAX,
-    GAME_TABLE_X_MIN,
-    GAME_TABLE_Y_MIN,
-  } = config;
+export default (
+  processorData: ActionProcessorData
+): RobotStatus | undefined => {
+  const { robotStatus: requestedRobotStatus } = processorData;
+  if (!requestedRobotStatus) {
+    return;
+  }
   const { x, y } = requestedRobotStatus;
-  if (
-    x >= GAME_TABLE_X_MIN &&
-    x <= GAME_TABLE_X_MAX &&
-    y >= GAME_TABLE_Y_MIN &&
-    y <= GAME_TABLE_Y_MAX
-  ) {
+
+  if (!isObstacle({ x, y })) {
     return requestedRobotStatus;
   }
   return;

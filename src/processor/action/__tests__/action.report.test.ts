@@ -17,7 +17,9 @@ describe('action.report', () => {
     const displayString = `Output: ${robotStatus.x},${robotStatus.y},${robotStatus.orientation}`;
 
     // When
-    sut(robotStatus);
+    sut({
+      robotStatus,
+    });
 
     //Then
     expect(consoleLogMock).toHaveBeenCalledWith(displayString);
@@ -28,7 +30,9 @@ describe('action.report', () => {
     const robotStatus = undefined;
 
     // When
-    sut(robotStatus);
+    sut({
+      robotStatus,
+    });
 
     //Then
     expect(consoleLogMock).not.toBeCalled();

@@ -1,10 +1,17 @@
-import { RobotStatus, RobotOrientation } from '../processor.types';
+import {
+  RobotStatus,
+  RobotOrientation,
+  ActionProcessorData,
+} from '../processor.types';
 
-export default (currentRobotStatus?: RobotStatus): RobotStatus | undefined => {
-  if (currentRobotStatus) {
-    const { orientation } = currentRobotStatus;
+export default (
+  processorData: ActionProcessorData
+): RobotStatus | undefined => {
+  const { robotStatus } = processorData;
+  if (robotStatus) {
+    const { orientation } = robotStatus;
     let newOrientation = orientation;
-    switch (currentRobotStatus.orientation) {
+    switch (robotStatus.orientation) {
       case RobotOrientation.NORTH:
         newOrientation = RobotOrientation.WEST;
         break;
@@ -17,6 +24,6 @@ export default (currentRobotStatus?: RobotStatus): RobotStatus | undefined => {
       case RobotOrientation.WEST:
         newOrientation = RobotOrientation.SOUTH;
     }
-    return { ...currentRobotStatus, orientation: newOrientation };
+    return { ...robotStatus, orientation: newOrientation };
   }
 };

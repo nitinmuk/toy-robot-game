@@ -13,7 +13,9 @@ describe('action.place', () => {
     const expectedResponse = requestedStatus;
 
     // When
-    const newStatus = sut(requestedStatus);
+    const newStatus = sut({
+      robotStatus: requestedStatus,
+    });
 
     // Then
     expect(newStatus).toEqual(expectedResponse);
@@ -28,7 +30,9 @@ describe('action.place', () => {
     };
 
     // When
-    const newStatus = sut(currentStatus);
+    const newStatus = sut({
+      robotStatus: currentStatus,
+    });
 
     // Then
     expect(newStatus).toBeUndefined();
@@ -43,7 +47,9 @@ describe('action.place', () => {
     };
 
     // When
-    const newStatus = sut(requestedStatus);
+    const newStatus = sut({
+      robotStatus: requestedStatus,
+    });
 
     // Then
     expect(newStatus).toBeUndefined();
@@ -57,7 +63,9 @@ describe('action.place', () => {
     };
 
     // When
-    const newStatus = sut(requestedStatus);
+    const newStatus = sut({
+      robotStatus: requestedStatus,
+    });
 
     // Then
     expect(newStatus).toBeUndefined();
@@ -71,7 +79,9 @@ describe('action.place', () => {
     };
 
     // When
-    const newStatus = sut(currentStatus);
+    const newStatus = sut({
+      robotStatus: currentStatus,
+    });
 
     // Then
     expect(newStatus).toBeUndefined();

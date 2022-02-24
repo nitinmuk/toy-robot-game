@@ -1,6 +1,13 @@
-import { RobotStatus, RobotOrientation } from '../processor.types';
+import {
+  RobotStatus,
+  RobotOrientation,
+  ActionProcessorData,
+} from '../processor.types';
 
-export default (currentRobotStatus?: RobotStatus): RobotStatus | undefined => {
+export default (
+  processorData: ActionProcessorData
+): RobotStatus | undefined => {
+  const { robotStatus: currentRobotStatus } = processorData;
   if (currentRobotStatus) {
     const { orientation } = currentRobotStatus;
     let newOrientation = orientation;

@@ -2,9 +2,13 @@ export enum ProcessorStrategyType {
   COMMAND_LINE = 'commandline',
 }
 
-export interface GameTable {
+export interface Position {
   x: number;
   y: number;
+}
+export interface Node {
+  position: Position;
+  previousPosition: Position | null;
 }
 
 export enum UserCommand {
@@ -13,6 +17,7 @@ export enum UserCommand {
   LEFT = 'LEFT',
   RIGHT = 'RIGHT',
   REPORT = 'REPORT',
+  FINDPATH = 'FINDPATH',
 }
 
 export enum RobotOrientation {
@@ -22,7 +27,7 @@ export enum RobotOrientation {
   WEST = 'WEST',
 }
 
-export interface RobotStatus extends GameTable {
+export interface RobotStatus extends Position {
   orientation: `${RobotOrientation}`;
 }
 
@@ -31,13 +36,25 @@ export interface UserPlaceAction {
   robotStatus: RobotStatus;
 }
 
+export interface UserFindPathAction {
+  action: 'FINDPATH';
+  destination: Position;
+}
+
 export type UserAction =
   | UserPlaceAction
-  | { action: Omit<UserCommand, 'PLACE'> };
+  | { action: Omit<UserCommand, 'PLACE'> }
+  | UserFindPathAction;
 
+export interface ActionProcessorData {
+  robotStatus: RobotStatus | undefined;
+  destination?: Position;
+}
 export interface UserActionProcessor {
   userAction: UserCommand;
-  processor: (robotStatus: RobotStatus) => RobotStatus | undefined | void;
+  processor: (
+    actionProcessorData: ActionProcessorData
+  ) => RobotStatus | undefined | void;
 }
 
 export interface ProcessorStrategy {

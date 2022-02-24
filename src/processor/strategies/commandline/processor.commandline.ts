@@ -3,6 +3,7 @@ import {
   ProcessorStrategy,
   RobotStatus,
   UserPlaceAction,
+  UserFindPathAction,
 } from '../../processor.types';
 import actionParser from '../../action/action.parser';
 import userActionProcessors from '../../user.action.processor';
@@ -21,9 +22,11 @@ const commandlineProcessor: ProcessorStrategy = {
           userActionProcessor.userAction === userAction.action
       );
       const requestedRobotStatus = (userAction as UserPlaceAction).robotStatus;
-      const updatedRobotStatus = actionProcessor?.processor(
-        requestedRobotStatus ?? currentRobotStatus
-      );
+      const destination = (userAction as UserFindPathAction).destination;
+      const updatedRobotStatus = actionProcessor?.processor({
+        robotStatus: requestedRobotStatus ?? currentRobotStatus,
+        destination,
+      });
       currentRobotStatus = updatedRobotStatus ?? currentRobotStatus;
     }
   },
