@@ -100,6 +100,6 @@ export default (processorData: ActionProcessorData): void => {
       });
     }
   }
-  console.log('path not found');
+  console.log('Path not found');
   return;
 };
