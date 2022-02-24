@@ -1,7 +1,14 @@
 import { ActionProcessorData, Node } from '../processor.types';
 import { isObstacle } from '../obstacle';
 
+//@TODO need to add test cases
 const displayRobotPath = (traversedNodes: Node[]) => {
+  if (traversedNodes.length === 1) {
+    console.log(
+      `Robot current position is same as requested destination i.e. (${traversedNodes[0].position.x}, ${traversedNodes[0].position.y})`
+    );
+    return;
+  }
   let robotPath = '';
   let traversedNode: Node | undefined =
     traversedNodes[traversedNodes.length - 1];
